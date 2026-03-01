@@ -1,16 +1,3 @@
-<?php
-require_once __DIR__ . "/../config/database.php";
-
-$conexionOK = false;
-
-try {
-    db();
-    $conexionOK = true;
-} catch (Throwable $e) {
-    $conexionOK = false;
-}
-?>
-
 <!doctype html>
 <html lang="es">
 <head>
@@ -19,23 +6,9 @@ try {
   <title>Sistema Inventario + Ventas</title>
 </head>
 <body style="font-family:Arial; padding:20px;">
-
   <h1>Sistema Inventario + Ventas</h1>
-
-  <p>
-    Estado de la conexión:
-    <?php if ($conexionOK): ?>
-      <strong style="color:green;">Conectado correctamente</strong>
-    <?php else: ?>
-      <strong style="color:red;">Error de conexión</strong>
-    <?php endif; ?>
-  </p>
-
-  <hr>
-
   <ul>
     <li><a href="productos.php">Módulo Productos</a></li>
   </ul>
-
 </body>
 </html>
