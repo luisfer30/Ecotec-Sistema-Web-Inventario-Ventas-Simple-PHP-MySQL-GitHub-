@@ -1,0 +1,114 @@
+body {
+    font-family: Arial;
+    background: #f6f7fb;
+    margin: 0;
+    padding: 20px;
+}
+
+.card {
+    background: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    max-width: 980px;
+    margin: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.col {
+    flex: 1;
+    min-width: 200px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 14px;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn {
+    background: #0d47a1;
+    color: #fff;
+}
+
+.btn2 {
+    background: #546e7a;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+th,
+td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.msg {
+    padding: 10px;
+    background: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.err {
+    padding: 10px;
+    background: #ffebee;
+    border: 1px solid #ef9a9a;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+a {
+    color: #0d47a1;
+    text-decoration: none;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.small {
+    color: #607d8b;
+    font-size: 13px;
+}
+
+/* Botón "Eliminar" como link */
+.btn-link {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #0d47a1;
+    cursor: pointer;
+    font: inherit;
+}

@@ -20,113 +20,10 @@ $edit = $data['editando'];
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script defer src="assets/js/app.js"></script>
   <title>CRUD Productos Por Luis Bustamante</title>
-  <style>
-    body {
-      font-family: Arial;
-      background: #f6f7fb;
-      margin: 0;
-      padding: 20px;
-    }
-
-    .card {
-      background: #fff;
-      padding: 16px;
-      border-radius: 12px;
-      max-width: 980px;
-      margin: auto;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
-    }
-
-    h1 {
-      margin-top: 0;
-    }
-
-    .row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .col {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    input {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    button {
-      padding: 10px 14px;
-      border: 0;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .btn {
-      background: #0d47a1;
-      color: #fff;
-    }
-
-    .btn2 {
-      background: #546e7a;
-      color: #fff;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 12px;
-    }
-
-    th,
-    td {
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-      text-align: left;
-    }
-
-    .msg {
-      padding: 10px;
-      background: #e8f5e9;
-      border: 1px solid #a5d6a7;
-      border-radius: 10px;
-      margin: 10px 0;
-    }
-
-    .err {
-      padding: 10px;
-      background: #ffebee;
-      border: 1px solid #ef9a9a;
-      border-radius: 10px;
-      margin: 10px 0;
-    }
-
-    a {
-      color: #0d47a1;
-      text-decoration: none;
-    }
-
-    .top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .small {
-      color: #607d8b;
-      font-size: 13px;
-    }
-  </style>
 </head>
 
 <body>
@@ -217,14 +114,10 @@ $edit = $data['editando'];
               <td><?= h($p['stock']) ?></td>
               <td>
                 <a href="productos.php?accion=editar&id=<?= h($p['id']) ?>">Editar</a>
-                <form method="post" action="productos.php" style="display:inline;"
-                  onsubmit="return confirm('¿Eliminar este producto?');">
+                <form method="post" action="productos.php" style="display:inline;" data-confirm="delete">
                   <input type="hidden" name="accion" value="eliminar">
                   <input type="hidden" name="id" value="<?= h($p['id']) ?>">
-                  <button type="submit"
-                    style="background:none;border:none;padding:0;color:#0d47a1;cursor:pointer;">
-                    Eliminar
-                  </button>
+                  <button type="submit" class="btn-link">Eliminar</button>
                 </form>
               </td>
             </tr>
@@ -237,3 +130,5 @@ $edit = $data['editando'];
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script defer src="assets/js/app.js"></script>
