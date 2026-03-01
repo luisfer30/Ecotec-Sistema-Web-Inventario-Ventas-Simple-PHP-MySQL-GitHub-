@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 require_once __DIR__ . '/../services/ProductoService.php';
@@ -66,7 +67,7 @@ final class ProductoController
             }
 
             if ($accion === 'eliminar') {
-                $id = (int)($_GET['id'] ?? 0);
+                $id = (int)($_POST['id'] ?? 0);
                 $this->service->eliminar($id);
                 $data['mensaje'] = 'Producto eliminado correctamente.';
             }
@@ -75,7 +76,6 @@ final class ProductoController
             $data['productos'] = $this->service->listar();
 
             return $data;
-
         } catch (Throwable $e) {
             $data['errores'][] = 'Error interno del sistema.';
             $data['productos'] = $this->service->listar();
