@@ -33,7 +33,7 @@ if (!empty($data['productos'])) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Módulo Productos</title>
+  <title>Módulo Productos Por Luis Bustamante</title>
 
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -131,7 +131,6 @@ if (!empty($data['productos'])) {
         <div class="top">
           <div>
             <h2>Listado</h2>
-            <p>Usa el buscador para filtrar por nombre (sin recargar).</p>
           </div>
         </div>
 

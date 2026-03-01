@@ -16,6 +16,9 @@ final class ProductoController
     public function handle(): array
     {
         $accion = $_POST['accion'] ?? $_GET['accion'] ?? 'listar';
+        $isPost = ($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST';
+
+        $msg = $_GET['msg'] ?? '';
 
         $data = [
             'mensaje' => '',
@@ -23,6 +26,16 @@ final class ProductoController
             'editando' => null,
             'productos' => []
         ];
+
+
+        $flashMap = [
+            'creado' => 'Producto creado correctamente.',
+            'actualizado' => 'Producto actualizado correctamente.',
+            'eliminado' => 'Producto eliminado correctamente.',
+        ];
+        if ($msg && isset($flashMap[$msg])) {
+            $data['mensaje'] = $flashMap[$msg];
+        }
 
         try {
 
@@ -36,7 +49,12 @@ final class ProductoController
                 if (!$res['ok']) {
                     $data['errores'] = $res['errores'];
                 } else {
-                    $data['mensaje'] = 'Producto creado correctamente.';
+                    // PRG redirect
+                    if ($isPost) {
+                        header('Location: productos.php?msg=creado');
+                        exit;
+                    }
+                    $data['mensaje'] = $flashMap['creado'];
                 }
             }
 
@@ -61,20 +79,29 @@ final class ProductoController
 
                 if (!$res['ok']) {
                     $data['errores'] = $res['errores'];
+                    $data['editando'] = $this->service->obtenerPorId($id);
                 } else {
-                    $data['mensaje'] = 'Producto actualizado correctamente.';
+                    if ($isPost) {
+                        header('Location: productos.php?msg=actualizado');
+                        exit;
+                    }
+                    $data['mensaje'] = $flashMap['actualizado'];
                 }
             }
 
             if ($accion === 'eliminar') {
                 $id = (int)($_POST['id'] ?? 0);
                 $this->service->eliminar($id);
-                $data['mensaje'] = 'Producto eliminado correctamente.';
+
+                if ($isPost) {
+                    header('Location: productos.php?msg=eliminado');
+                    exit;
+                }
+                $data['mensaje'] = $flashMap['eliminado'];
             }
 
-            // Siempre listamos productos al final
+            // Siempre listamos al final
             $data['productos'] = $this->service->listar();
-
             return $data;
         } catch (Throwable $e) {
             $data['errores'][] = 'Error interno del sistema.';

@@ -1,8 +1,4 @@
-// public/assets/js/app.js
-
 document.addEventListener("DOMContentLoaded", () => {
-    // Debug: confirma que cargó SweetAlert
-    // Si ves "function" está OK
     console.log("app.js cargó ✅", typeof Swal);
 
     // 1) SweetAlert confirm delete
@@ -11,15 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const form = e.target;
         if (!(form instanceof HTMLFormElement)) return;
 
-        // Solo intercepta forms marcados
         if (form.dataset.confirm !== "delete") return;
 
         // Evita doble ejecución si otro handler ya canceló
         if (e.defaultPrevented) return;
 
         e.preventDefault();
-
-        // Si por alguna razón Swal no existe, fallback a confirm nativo
         if (typeof Swal === "undefined") {
             if (confirm("¿Eliminar producto? Esta acción no se puede deshacer.")) {
                 form.submit();
